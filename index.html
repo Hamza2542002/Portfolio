@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza Mosaad | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(-45deg, #37353E, #715A5A, #44444E, #D3DAD9);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        .skill-bar {
+            transition: width 1.5s ease-out;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .project-card {
+            background: linear-gradient(145deg, #44444E, #37353E);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        
+        /* Fixed skill bars */
+        .skill-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .skill-level {
+            text-align: right;
+            padding: 5px 10px;
+            color: white;
+            border-radius: 10px;
+            background-color: #715A5A;
+        }
+        
+        /* Timeline fix */
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: #715A5A;
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #715A5A;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-sm z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold" style="color: #715A5A;">HM</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-[#715A5A] transition">About</a>
+                <a href="#skills" class="hover:text-[#715A5A] transition">Skills</a>
+                <a href="#projects" class="hover:text-[#715A5A] transition">Projects</a>
+                <a href="#education" class="hover:text-[#715A5A] transition">Education</a>
+                <a href="#contact" class="hover:text-[#715A5A] transition">Contact</a>
+            </div>
+            <button class="md:hidden text-gray-600 focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-20 gradient-bg text-white">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 animate-fadeIn">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Hi, I'm <span style="color: #D3DAD9;">Hamza Mosaad</span></h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6">Front-End Developer</h2>
+                <p class="text-lg mb-8 opacity-90">I build responsive, scalable web interfaces with pixel-perfect precision.</p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="px-6 py-3 bg-white text-[#715A5A] rounded-full font-semibold hover:bg-[#D3DAD9] transition transform hover:scale-105">Hire Me</a>
+                    <a href="#about" class="px-6 py-3 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-[#715A5A] transition transform hover:scale-105">Learn More</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center animate-fadeIn delay-200 animate-float">
+                <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                     alt="Developer Illustration" 
+                     class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover shadow-xl border-4 border-white">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fadeIn">About <span style="color: #715A5A;">Me</span></h2>
+            
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center animate-fadeIn">
+                    <div class="relative">
+                        <div class="w-64 h-64 rounded-full absolute -z-10 top-4 left-4" style="background-color: #D3DAD9;"></div>
+                        <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" 
+                             alt="Hamza Mosaad" 
+                             class="w-64 h-64 rounded-full object-cover border-4 border-white shadow-lg">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12 animate-fadeIn delay-200">
+                    <p class="text-lg mb-6 leading-relaxed">
+                        Skilled in building responsive, scalable web interfaces using HTML5, CSS3, and JavaScript (ES6+). 
+                        Proficient in React, Angular, and modern UI libraries like Tailwind CSS. Experienced in API integration, 
+                        component-based architecture, and version control with Git. Passionate about delivering pixel-perfect, 
+                        user-friendly experiences in collaboration with cross-functional teams.
+                    </p>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 p-4 rounded-lg shadow-sm hover:shadow-md transition card-hover">
+                            <h3 class="font-semibold" style="color: #715A5A;">10+</h3>
+                            <p class="text-gray-600">Projects Completed</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg shadow-sm hover:shadow-md transition card-hover">
+                            <h3 class="font-semibold" style="color: #715A5A;">3+</h3>
+                            <p class="text-gray-600">Years Experience</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg shadow-sm hover:shadow-md transition card-hover">
+                            <h3 class="font-semibold" style="color: #715A5A;">100%</h3>
+                            <p class="text-gray-600">Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section - Fixed to match the requested design -->
+    <section id="skills" class="py-20" style="background-color: #D3DAD9;">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fadeIn">My <span style="color: #715A5A;">Skills</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fadeIn delay-100">
+                <!-- Languages -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4" style="background-color: #D3DAD9;">
+                            <i class="fas fa-code" style="color: #715A5A;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Languages</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>JavaScript, ES6</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 90%;">90%</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>C#</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 80%;">80%</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>C++</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 75%;">75%</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Python</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 70%;">70%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Front-End -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4" style="background-color: #D3DAD9;">
+                            <i class="fas fa-laptop-code" style="color: #715A5A;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Front-End</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>React</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 95%;">95%</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Angular</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 85%;">85%</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Tailwind CSS</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 90%;">90%</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>HTML5/CSS3</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 95%;">95%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tools -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4" style="background-color: #D3DAD9;">
+                            <i class="fas fa-tools" style="color: #715A5A;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Tools & Build Systems</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Git</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 90%;">90%</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>GitHub</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 85%;">85%</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Vite</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 80%;">80%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Databases -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4" style="background-color: #D3DAD9;">
+                            <i class="fas fa-database" style="color: #715A5A;"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Databases</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>SQL Server</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-container">
+                                <div class="skill-level" style="width: 85%;">85%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fadeIn">My <span style="color: #715A5A;">Projects</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fadeIn delay-100">
+                <!-- Weather App -->
+                <div class="project-card rounded-xl p-6 text-white">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background-color: #715A5A;">
+                            <i class="fas fa-cloud text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Weather App</h3>
+                    </div>
+                    <p class="mb-6 text-gray-300">Angular application that displays current weather and forecasts using weather API.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">Angular</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">API Integration</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">Responsive</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Hamza2542002/weather-website" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium" style="background-color: #715A5A;">View Code</a>
+                        <a href="https://main--weather1-web2-app3.netlify.app/" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium border border-[#715A5A] text-[#715A5A] hover:bg-[#715A5A] hover:text-white transition">Live Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Pizza Delivery App -->
+                <div class="project-card rounded-xl p-6 text-white">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background-color: #715A5A;">
+                            <i class="fas fa-pizza-slice text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Pizza Delivery App</h3>
+                    </div>
+                    <p class="mb-6 text-gray-300">React application for ordering pizzas with cart functionality and order tracking.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">React</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">Redux</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">Cart System</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Hamza2542002/fast-react-pizza" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium" style="background-color: #715A5A;">View Code</a>
+                        <a href="https://main--pizza-delivery-react.netlify.app/" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium border border-[#715A5A] text-[#715A5A] hover:bg-[#715A5A] hover:text-white transition">Live Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Tour App -->
+                <div class="project-card rounded-xl p-6 text-white">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center mr-4" style="background-color: #715A5A;">
+                            <i class="fas fa-map-marked-alt text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Tour App</h3>
+                    </div>
+                    <p class="mb-6 text-gray-300">Interactive tour guide application with location-based recommendations.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">React</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">Map Integration</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">UI/UX</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Hamza2542002/tour-app" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium" style="background-color: #715A5A;">View Code</a>
+                        <a href="https://hamza-tour-app.netlify.app/" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium border border-[#715A5A] text-[#715A5A] hover:bg-[#715A5A] hover:text-white transition">Live Demo</a>
+                    </div>
+                </div>
+                                <!-- E-Learning App -->
+                <div class="project-card rounded-xl p-6 text-white">
+                    <div class="flex items-center mb-4">
+                        <div class="project-icon mr-4">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">E-Learning App</h3>
+                    </div>
+                    <p class="mb-6 text-gray-300">Comprehensive online education platform with courses and progress tracking.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">React</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">Firebase</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">Authentication</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Hamza2542002/e-learning-education" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium" style="background-color: #715A5A;">View Code</a>
+                        <a href="https://e-learning-education-mosaad.netlify.app/" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium border border-[#715A5A] text-[#715A5A] hover:bg-[#715A5A] hover:text-white transition">Live Demo</a>
+                    </div>
+                </div>
+                
+                <!-- usePopcorn -->
+                <div class="project-card rounded-xl p-6 text-white">
+                    <div class="flex items-center mb-4">
+                        <div class="project-icon mr-4">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">usePopcorn</h3>
+                    </div>
+                    <p class="mb-6 text-gray-300">Movie search application with rating system and watchlist functionality.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">React</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">OMDb API</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">Local Storage</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/Hamza2542002/usePopcorn" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium" style="background-color: #715A5A;">View Code</a>
+                        <a href="https://hamza2542002.github.io/usePopcorn/" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium border border-[#715A5A] text-[#715A5A] hover:bg-[#715A5A] hover:text-white transition">Live Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Dashboard Website -->
+                <div class="project-card rounded-xl p-6 text-white">
+                    <div class="flex items-center mb-4">
+                        <div class="project-icon mr-4">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Dashboard Website</h3>
+                    </div>
+                    <p class="mb-6 text-gray-300">Analytics dashboard with data visualization and responsive design.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">HTML/CSS</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">JavaScript</span>
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">Charts</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://hamza2542002.github.io/Dashboard/" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium" style="background-color: #715A5A;">View Code</a>
+                        <a href="https://hamza2542002.github.io/Dashboard/" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium border border-[#715A5A] text-[#715A5A] hover:bg-[#715A5A] hover:text-white transition">Live Demo</a>
+                    </div>
+                </div>
+                <div class="project-card rounded-xl p-6 text-white">
+                    <div class="flex items-center mb-4">
+                        <div class="project-icon mr-4">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Template Three</h3>
+                    </div>
+                    <p class="mb-6 text-gray-300">Gaming Template.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 rounded-full text-xs" style="background-color: #44444E;">HTML/CSS</span>
+                    </div>
+                    <div class="flex space-x-4">
+                        <a href="https://hamza2542002.github.io/Template-Three/" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium" style="background-color: #715A5A;">View Code</a>
+                        <a href="https://hamza2542002.github.io/Template-Three/" target="_blank" class="px-4 py-2 rounded-lg text-sm font-medium border border-[#715A5A] text-[#715A5A] hover:bg-[#715A5A] hover:text-white transition">Live Demo</a>
+                    </div>
+                </div>
+              </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20" style="background-color: #D3DAD9;">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fadeIn">My <span style="color: #715A5A;">Education</span></h2>
+            
+            <div class="max-w-3xl mx-auto animate-fadeIn delay-100">
+                <div class="relative">
+                    <!-- Timeline line -->
+                    <div class="absolute left-5 md:left-1/2 h-full w-0.5 transform -translate-x-1/2" style="background-color: #715A5A;"></div>
+                    
+                    <!-- Education Item -->
+                    <div class="mb-12">
+                        <div class="flex flex-col md:flex-row items-center md:items-start">
+                            <div class="md:w-1/2 md:pr-8 mb-4 md:mb-0 md:text-right">
+                                <h3 class="text-xl font-semibold">Bachelor of Engineering in Computer Engineering</h3>
+                                <p style="color: #715A5A;">Tanta University</p>
+                            </div>
+                            <div class="w-10 h-10 rounded-full border-4 border-white flex items-center justify-center mx-auto md:mx-0 z-10" style="background-color: #715A5A;">
+                                <i class="fas fa-graduation-cap text-white"></i>
+                            </div>
+                            <div class="md:w-1/2 md:pl-8 mt-4 md:mt-0">
+                                <p class="text-gray-600">Aug 2020 – Aug 2025 | Tanta, Egypt</p>
+                                <p class="text-gray-800 font-medium">Graduation Score: 88.8% (Excellent)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 animate-fadeIn">Get In <span style="color: #715A5A;">Touch</span></h2>
+            
+            <div class="flex flex-col md:flex-row animate-fadeIn delay-100">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    <p class="mb-8 text-gray-600">Feel free to reach out to me for any questions or opportunities!</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1" style="background-color: #D3DAD9;">
+                                <i class="fas fa-envelope" style="color: #715A5A;"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <a href="mailto:hamzamosaad2002@gmail.com" class="text-gray-600 hover:text-[#715A5A] transition">hamzamosaad2002@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1" style="background-color: #D3DAD9;">
+                                <i class="fas fa-phone" style="color: #715A5A;"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <a href="tel:01275869193" class="text-gray-600 hover:text-[#715A5A] transition">01275869193</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1" style="background-color: #D3DAD9;">
+                                <i class="fab fa-linkedin-in" style="color: #715A5A;"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/hamza-mosaad-5a1a54260/" target="_blank" class="text-gray-600 hover:text-[#715A5A] transition">linkedin.com/in/hamza-mosaad</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 rounded-full flex items-center justify-center mr-4 mt-1" style="background-color: #D3DAD9;">
+                                <i class="fab fa-github" style="color: #715A5A;"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">GitHub</h4>
+                                <a href="https://github.com/" target="_blank" class="text-gray-600 hover:text-[#715A5A] transition">github.com/hamzamosaad</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-8">
+                    <h3 class="text-2xl font-semibold mb-6">Send Me a Message</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#715A5A] focus:border-transparent transition">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2">Your Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#715A5A] focus:border-transparent transition">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#715A5A] focus:border-transparent transition">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#715A5A] focus:border-transparent transition"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="px-6 py-3 text-white rounded-lg font-semibold hover:bg-[#44444E] transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#715A5A] focus:ring-offset-2" style="background-color: #715A5A;">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8" style="background-color: #37353E;">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0 text-white">
+                    <p>&copy; 2023 Hamza Mosaad. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/hamza-mosaad-5a1a54260/" target="_blank" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#715A5A] transition" style="background-color: #44444E;">
+                        <i class="fab fa-linkedin-in text-white"></i>
+                    </a>
+                    <a href="https://github.com/" target="_blank" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#715A5A] transition" style="background-color: #44444E;">
+                        <i class="fab fa-github text-white"></i>
+                    </a>
+                    <a href="mailto:hamzamosaad2002@gmail.com" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#715A5A] transition" style="background-color: #44444E;">
+                        <i class="fas fa-envelope text-white"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animate elements when they come into view
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-fadeIn');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.animation = 'fadeIn 1s forwards';
+                }
+            });
+        };
+        
+        // Initialize animations on load
+        window.addEventListener('load', () => {
+            animateOnScroll();
+        });
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
